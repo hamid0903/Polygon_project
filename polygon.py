@@ -1,3 +1,4 @@
+from base64 import b16decode
 import math
 class Polygon:
     """ 
@@ -23,7 +24,7 @@ class Polygon:
         """
         self.vertices = vertices
 
-    #Define the method to validate the polygon
+    #7 Define the method to validate the polygon
     def is_valid(self) -> bool:
         """
         Validate the polygon.
@@ -33,13 +34,35 @@ class Polygon:
         """
         pass
     
-    # Calculate the area of the polygon
+    #4 Calculate the area of the polygon
     def area(self) -> float:
         """
         Calculate the area of the polygon.
         """
-        pass
-    # Distance between two points
+        if len(self.vertices) < 3:
+            r=self.distance
+            aylana=math.pi*(pow(r))
+            return aylana
+        elif len(self.vertices) == 3:
+            a, b, c =self.sides
+            
+            s = self.perimeter / 2
+            uchburchak = math.sqrt(s * (s - a) * (s - b) * (s - c))
+            return round(uchburchak, 2)
+        elif len(self.vertices) == 4:
+            a, b, c, d = self.sides
+           
+            s = self.perimeter / 2
+            tortburchak = math.sqrt(s * (s - a) * (s - b) * (s - c) * (s - d))
+            return round(tortburchak, 2)
+        elif len(self.vertices) == 5:
+            a, b, c, d, e = self.sides
+            
+            s = self.perimeter / 2
+            beshburchak = math.sqrt(s * (s - a) * (s - b) * (s - c) * (s - d) * (s - e))
+            return round(beshburchak, 2)
+
+    #1 Distance between two points
     def distance(self, p1: tuple, p2: tuple) -> float:
         """
         Calculate the distance between two points.
@@ -49,27 +72,30 @@ class Polygon:
         Returns:
             the distance between p1 and p2
         """
-        pass
+        x1,y1=p1
+        x2,y2=p2
+        return math.sqrt( pow(x2 - x1, 2) + pow(y2 - y1, 2))
 
-    #Define the method to get all sides of the length of the polygon
+    #2 Define the method to get all sides of the length of the polygon
     def sides(self) -> list:
         """
         Get all sides of the polygon.
         Returns:
             a list of all sides of the polygon
         """
-        pass
+        sides = [self.distance(self.vertices[-1], self.vertices[0])] + [self.distance(self.vertices[i], self.vertices[i+1]) for i in range(len(self.vertices)-1)]
+        return sides
      
-     # Define the method to calculate the perimeter of the polygon
+     #3 Define the method to calculate the perimeter of the polygon
     def perimeter(self) -> float:
         """
         Calculate the perimeter of the polygon.
         Returns:
             the perimeter of the polygon
         """
-        pass
+        return (sum(self.sides()))
 
-    #Define the method to calculate the angle between two sides
+    #5 Define the method to calculate the angle between two sides
     def angles(self) -> list:
         """
         Calculate the angles of the polygon.
@@ -78,7 +104,7 @@ class Polygon:
         """
         pass
         
-    #Define the method to calculate the centroid of the polygon
+    # 6 Define the method to calculate the centroid of the polygon
     def centroid(self) -> tuple:
         """
         Calculate the centroid of the polygon.
@@ -87,3 +113,5 @@ class Polygon:
         """
         pass
 
+vert = Polygon([(4,5), (1.5,2), (7,2), ])
+print(vert.area())
