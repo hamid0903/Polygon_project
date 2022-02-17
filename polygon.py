@@ -32,7 +32,17 @@ class Polygon:
             True if the polygon is valid
             False if the polygon is invalid
         """
-        pass
+        #if len(self.vertices) == 3:
+            #if p1[2]==p2[1] and p2[2]==p3[1] and p3[3]==p1[1]
+                #print(True)
+        #elif len(self.vertices) == 4:
+            #if p1[2]==p2[1] and p2[2]==p3[1] and p3[2]==p4[1] and p4[2]==p1[1]
+                #print(True)
+        #elif len(self.vertices) == 5:
+            #if p1[2]==p2[1] and p2[2]==p3[1] and p3[2]==p4[1] and p4[2]==p5[1] and p5[2]==p1[1]
+                #print(True)
+        #else:
+            #print(False)
     
     #4 Calculate the area of the polygon
     def area(self) -> float:
